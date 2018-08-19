@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" content="300">
+        <title>Calender</title>
+        <script>
+            function setFocus() {
+                var iframe = document.getElementById("calender");
+                iframe.contentWindow.focus();
+            }
+        </script>
+        <style>
+            body {
+              display: grid;
+              grid-template-columns: 80% 20%;
+              grid-template-rows: 6.5vw 50vw;
+              grid-gap: 1em;
+            }
+
+            header {
+              grid-column: 1 / span 2;
+            }
+
+            /* Demo Specific Styles */
+            body {
+              margin: 0 auto;
+              max-width: 80em;
+              padding: 1em 0;
+            }
+
+            header,
+            main,
+            aside {
+              background: #eaeaea;
+              /*display: flex;*/
+              align-items: center;
+              justify-content: center;
+            }
+            .backlog {
+            align-items: center;
+            }
+        </style>
+    </head>
+    <body onLoad="setFocus()">
+        <header>
+            <a class="weatherwidget-io" href="https://forecast7.com/en/34d03n84d24/30022/" data-label_1="JOHNS CREEK" data-label_2="WEATHER" data-theme="orange" width=1366>Johns Creek</a>
+            <script>
+             !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+            </script>
+        </header>
+        <main>
+                   <iframe id="calendar" src="https://calendar.google.com/calendar/embed?height=720&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=limonanat%40gmail.com&amp;color=%23691426&amp;src=family01119691838309223265%40group.calendar.google.com&amp;color=%2329527A&amp;src=p%23weeknum%40group.v.calendar.google.com&amp;color=%235229A3&amp;src=iw.usa%23holiday%40group.v.calendar.google.com&amp;color=%23875509&amp;src=iw.jewish%23holiday%40group.v.calendar.google.com&amp;color=%2329527A&amp;src=iw.christian%23holiday%40group.v.calendar.google.com&amp;color=%232952A3&amp;ctz=America%2FNew_York" style="border-width:0" width="1025" height="720" frameborder="0" scrolling="no"></iframe>
+        </main>
+        <aside>
+            <div class="backlog">
+                <iframe id="showBacklog" src="http://localhost:{{ port }}/showsBacklog" width="250" height="712"></iframe>
+            </div>
+        </aside>
+    </body>
+</html>

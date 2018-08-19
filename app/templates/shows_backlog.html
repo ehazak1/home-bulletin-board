@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shows Backlog</title>
+</head>
+<body>
+    <table cellpadding="2">
+        <form method="POST" action="" novalidate>
+        <tr><td>Show</td><td>Last Season Watched</td><td>Done ?</td></tr>
+        {% for show in shows %}
+        <tr><td>{{ show.name }}</td><td>{{ show.season_watched }}</td><td><input type="checkbox" name="{{ show.id }}"></td></tr>
+        {% endfor %}
+        <tr><td colspan="3" align="center">{{ form.submit() }}</td></tr>
+        </form>
+    </table>
+</body>
+</html>

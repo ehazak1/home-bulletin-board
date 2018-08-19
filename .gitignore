@@ -1,0 +1,7 @@
+*.ipynb
+*.lst
+.idea/*
+old_site/*
+config.json
+*.lock
+*.diff

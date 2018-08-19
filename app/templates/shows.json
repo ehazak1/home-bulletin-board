@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "name": "Westworld",
+    "priority": 12,
+    "season_watched": 1
+  },
+  {
+    "id": 2,
+    "name": "Mr. Robot",
+    "priority": 2,
+    "season_watched": 1
+  },
+  {
+    "id": 3,
+    "name": "Absentia",
+    "priority": 3,
+    "season_watched": 1
+  },
+  {
+    "id": 4,
+    "name": "Arrow",
+    "priority": 4,
+    "season_watched": 1
+  },
+  {
+    "id": 5,
+    "name": "Glow",
+    "priority": 5,
+    "season_watched": 1
+  },
+  {
+    "id": 6,
+    "name": "Luke Cage",
+    "priority": 6,
+    "season_watched": 1
+  },
+  {
+    "id": 7,
+    "name": "Iron Fist",
+    "priority": 7,
+    "season_watched": 1
+  },
+  {
+    "id": 8,
+    "name": "Jack Ryan",
+    "priority": 8,
+    "season_watched": 1
+  },
+  {
+    "id": 9,
+    "name": "Suits",
+    "priority": 9,
+    "season_watched": 1
+  },
+  {
+    "id": 10,
+    "name": "Game of Thrones",
+    "priority": 10,
+    "season_watched": 1
+  },
+  {
+    "id": 11,
+    "name": "Dark",
+    "priority": 11,
+    "season_watched": 1
+  },
+  {
+    "id": 12,
+    "name": "Jessica Jones",
+    "priority": 13,
+    "season_watched": 2
+  },
+  {
+    "id": 13,
+    "name": "Daredevil",
+    "priority": 14,
+    "season_watched": 2
+  },
+  {
+    "id": 14,
+    "name": "Jessica Jones",
+    "priority": 14,
+    "season_watched": 2
+  },
+  {
+    "id": 15,
+    "name": "Blind Spot",
+    "priority": 15,
+    "season_watched": 3
+  },
+  {
+    "id": 16,
+    "name": "Cloak & Dagger",
+    "priority": 16,
+    "season_watched": 0
+  }
+]

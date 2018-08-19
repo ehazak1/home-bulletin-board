@@ -1,0 +1,10 @@
+{
+  "config": {
+    "smugmug": {
+      "smugmug_api_key": "YOUR_API_KEY_HERE",
+      "smugmug_user": "SMUGMUG_USERNAME"
+    },
+    "google_calendar": "GOOGLE_CALENDAR_URL",
+    "tcp_port": FLASK_TCP_LISTEN_PORT
+  }
+}

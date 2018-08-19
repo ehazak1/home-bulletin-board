@@ -1,0 +1,2 @@
+# Pull the list of images from Smugmug every night at 1am
+00 01 * * * python /home/pi/picture_frame/collect_images.py >> /home/pi/picture_frame/smugmug_collection.log  2>&1
