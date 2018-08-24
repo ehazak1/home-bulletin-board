@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, redirect, request
+from flask import render_template, redirect, request, url_for
 from app.forms import WatchForm
 import json
 from random import choice
@@ -20,11 +20,11 @@ def index():
     return render_template('index.html', image=image_to_show)
 
 
-@app.route('/calender')
-def calender():
+@app.route('/calendar')
+def calendar():
     config = load_external_conf()
-    calender_url = config['google_calendar']
-    return render_template('calender.html', calender_url=calender_url, port=config['tcp_port'])
+    calendar_url = config['google_calendar']
+    return render_template('calendar.html', calendar_url=calendar_url, port=config['tcp_port'])
 
 
 @app.route('/showsBacklog', methods=['GET', 'POST'])
@@ -32,7 +32,8 @@ def shows_backlog():
     config = load_external_conf()
     form = WatchForm()
     if form.validate_on_submit():
-        app.logger.debug("I'm in the showsBacklog Page")
+        #show_id, show_name, show_last_season = form.data.values()
+        print(form.data.values())
 
     with open('app/templates/shows.json') as h:
         shows = json.load(h)
