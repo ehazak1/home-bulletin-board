@@ -3,15 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Shows Backlog</title>
+    <style>
+
+    </style>
 </head>
 <body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <ul>
+                <li>{{ message }}</li>
+            </ul>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <table cellpadding="2">
-        <form method="POST" action="" novalidate>
-        <tr><td>Show</td><td>Last Season Watched</td><td>Done ?</td></tr>
-        {% for show in shows %}
-        <tr><td>{{ show.name }}</td><td>{{ show.season_watched }}</td><td><input type="checkbox" name="{{ show.id }}"></td></tr>
-        {% endfor %}
-        <tr><td colspan="3" align="center">{{ form.submit() }}</td></tr>
+        <form method="POST" action={{ url_for('shows_backlog') }}>
+            <tr><td colspan="3">Show Backlog</td></tr>
+            {{ form.hidden_tag() }}
+            <tr>
+                <td>Show: {{ form.sname(value='') }}</td>
+                <td>Delete? {{ form.delete() }}</td></t>
+                <td>{{ form.submit(value='Update') }}</td></tr>
+            </tr>
+            <tr><td colspan="2">Show</td><td>Last Season Watched</td></tr>
+            {% for show in shows %}
+            <tr>
+                <td colspan="2">{{ show.name }}</td>
+                <td>{{ show.season_watched }}</td>
+            </tr>
+            {% endfor %}
         </form>
     </table>
 </body>

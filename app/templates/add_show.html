@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Show</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <ul>
+                <li>{{ message }}</li>
+            </ul>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <table cellpadding="2">
+        <form method="POST" action={{ url_for('add_show') }}>
+            <tr><td>Add Show</td></tr>
+            {{ form.hidden_tag() }}
+            <tr><td>Show Name: {{ form.sname(size=20) }}</td></tr>
+            <tr><td>Last Season Watched {{ form.swatch(size=2, value=0) }}</td></tr>
+            <tr><td>{{ form.submit(value='Add Show') }}</td></tr>
+        </form>
+    </table>
+</body>
+</html>
