@@ -4,10 +4,23 @@
     <meta charset="UTF-8">
     <title>Shows Backlog</title>
     <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th {
+            text-align: center;
+        }
+        tr:nth-child(even) {background-color: #E3E9FF;}
 
     </style>
 </head>
 <body>
+<br>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
@@ -19,12 +32,12 @@
     {% endwith %}
     <table cellpadding="2">
         <form method="POST" action={{ url_for('shows_backlog') }}>
-            <tr><td colspan="3">Show Backlog</td></tr>
+            <tr><th colspan="3" bgcolor="#E3E9FF">Show Backlog</th></tr>
             {{ form.hidden_tag() }}
             <tr>
-                <td>Show: {{ form.sname(value='') }}</td>
-                <td>Delete? {{ form.delete() }}</td></t>
-                <td>{{ form.submit(value='Update') }}</td></tr>
+                <th>Show: {{ form.sname(value='') }}</th>
+                <th>Delete? {{ form.delete() }}</th>
+                <th>{{ form.submit(value='Update') }}</th>
             </tr>
             <tr><td colspan="2">Show</td><td>Seasons Watched</td></tr>
             {% for show in shows %}
