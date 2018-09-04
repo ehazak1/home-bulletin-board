@@ -11,8 +11,6 @@ Need to have the following packages installed:
 * git
 * python >= 3
 * python3-pip
-* apache2
-* libapache2-mod-wsgi
 
 Once Python is installed, since I'm running this on a Pi-Zero device
 I don't care if I'm not using a virtual environment.
