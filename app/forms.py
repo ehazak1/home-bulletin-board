@@ -15,5 +15,6 @@ class ShowUpdateForm(FlaskForm):
 class AddShowForm(FlaskForm):
     sname = StringField()
     swatch = IntegerField()
+    show_type = SelectField('Type', choices=sorted([(1, 'Show'), (2, 'Movie'), (3, 'Comedy')]))
     submit = SubmitField()
 

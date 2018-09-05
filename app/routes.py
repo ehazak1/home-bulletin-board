@@ -30,6 +30,7 @@ def shows_backlog():
     if request.method == 'POST' and form.validate_on_submit():
         show = form.sname.data
         delete = form.delete.data
+
         print("Delete:{}".format(delete))
         if len(show) == 0:
             flash("Must choose a show!")
@@ -48,14 +49,18 @@ def shows_backlog():
 def add_show():
     form = AddShowForm()
 
-    if request.method == 'POST' and form.validate_on_submit():
+    if request.method == 'POST':
         show = form.sname.data
         swatch = form.swatch.data
+        show_type = int(form.show_type.data)
         if len(show) == 0:
             flash('No show added, please type show name')
             return redirect(url_for('add_show'))
+        elif show_type == 2 and swatch != 0:
+            flash("A movie can't have seasons, please set seasons watched to 0")
+            return redirect(url_for('add_show'))
         else:
-            add_show_to_list(show, swatch)
+            add_show_to_list(show, swatch, show_type)
         return redirect(url_for('shows_backlog'))
 
     return render_template('add_show.html', form=form, request=request)
