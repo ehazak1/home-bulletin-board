@@ -2,8 +2,6 @@
 
 Some code I wrote to use my old Raspberry Pi zero as a picture frame (using my smugmug account)
 
-***XXX still not working XXXX***
-
 ## Deployment
 
 ### Prerequisites
@@ -26,4 +24,6 @@ Now you can start the gunicorn webserver (TODO: add config to run as daemon)
 
 Finally, need to install the crontab, so the image list will be collected daily.
 * `crontab /home/pi/picture_frame/crontab`
+
+Automatic deployment script to come at some point
 

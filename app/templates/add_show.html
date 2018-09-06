@@ -19,11 +19,12 @@
     {% endwith %}
     <table cellpadding="2">
         <form method="POST" action={{ url_for('add_show') }}>
-            <tr><td>Add Show</td></tr>
+            <tr><td>Add Content</td></tr>
             {{ form.hidden_tag() }}
-            <tr><td>Show Name: {{ form.sname(size=20) }}</td></tr>
+            <tr><td>Name: {{ form.sname(size=20) }}</td></tr>
+            <tr><td>Type: {{ form.show_type(value='') }}</td></tr>
             <tr><td>Last Season Watched {{ form.swatch(size=2, value=0) }}</td></tr>
-            <tr><td>{{ form.submit(value='Add Show') }}</td></tr>
+            <tr><td>{{ form.submit(value='Add Content') }}</td></tr>
         </form>
     </table>
 </body>
