@@ -37,13 +37,13 @@ body {font-family: Arial;}
 /* Style the tab content */
 .tabcontent {
     display: none;
-    padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
 }
 
 table {
     border-collapse: collapse;
+    width:100%
 }
 
 table, th, td {
@@ -71,18 +71,18 @@ tr:nth-child(even) {background-color: #8cedff;}
             <tr><th colspan="3" bgcolor="#8cedff">Show Backlog</th></tr>
             {{ form.hidden_tag() }}
             <tr>
-                <th colspan="2">Show: {{ form.sname(value='') }}</th>
-                <th>Delete? {{ form.delete() }}</th>
+                <th colspan="2">Show/Movie: {{ form.sname(value='') }}</th>
+                <th>Delete? <br> {{ form.delete() }}</th>
             </tr>
             <tr>
                 <td colspan="3" align="center">{{ form.submit(value='Update') }}</td>
             </tr>
-            <tr><td colspan="2">Show</td><td>Seasons Watched</td></tr>
+            <tr><th colspan="2">Show</th><th>Seasons Watched</th></tr>
             {% for show in shows %}
                 {% if show.type == 1 %}
                     <tr>
                         <td colspan="2">{{ show.name }}</td>
-                        <td>{{ show.season_watched }}</td>
+                        <td align="center">{{ show.season_watched }}</td>
                     </tr>
                 {% endif %}
             {% endfor %}
@@ -96,18 +96,18 @@ tr:nth-child(even) {background-color: #8cedff;}
             <tr><th colspan="3" bgcolor="#8cedff">Comedy Backlog</th></tr>
             {{ form.hidden_tag() }}
             <tr>
-                <th colspan="2">Show: {{ form.sname(value='') }}</th>
-                <th>Delete? {{ form.delete() }}</th>
+                <th colspan="2">Show/Movie: {{ form.sname(value='') }}</th>
+                <th>Delete? <br> {{ form.delete() }}</th>
             </tr>
             <tr>
                 <td colspan="3" align="center">{{ form.submit(value='Update') }}</td>
             </tr>
-            <tr><td colspan="2">Show</td><td>Seasons Watched</td></tr>
+            <tr><th colspan="2">Show</th><th>Seasons Watched</th></tr>
             {% for show in shows %}
                 {% if show.type == 3 %}
                     <tr>
                         <td colspan="2">{{ show.name }}</td>
-                        <td>{{ show.season_watched }}</td>
+                        <td align="center">{{ show.season_watched }}</td>
                     </tr>
                 {% endif %}
             {% endfor %}
@@ -122,12 +122,12 @@ tr:nth-child(even) {background-color: #8cedff;}
             {{ form.hidden_tag() }}
             <tr>
                 <th colspan="2">Show: {{ form.sname(value='') }}</th>
-                <th>Delete? {{ form.delete() }}</th>
+                <th>Delete? <br> {{ form.delete() }}</th>
             </tr>
             <tr>
                 <td colspan="3" align="center">{{ form.submit(value='Update') }}</td>
             </tr>
-            <tr><td colspan="3">Movie</td></tr>
+            <tr><th colspan="3">Show/Movie</th></tr>
             {% for show in shows %}
                 {% if show.type == 2 %}
                     <tr>
