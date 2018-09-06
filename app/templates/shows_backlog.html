@@ -65,7 +65,7 @@ tr:nth-child(even) {background-color: #8cedff;}
   <button class="tablinks" onclick="openCity(event, 'Movies')">Movies</button>
 </div>
 
-<div id="Shows" class="tabcontent">
+<div id="Shows" class="tabcontent" style="display:block">
       <table cellpadding="2">
         <form method="POST" action={{ url_for('shows_backlog') }}>
             <tr><th colspan="3" bgcolor="#8cedff">Show Backlog</th></tr>

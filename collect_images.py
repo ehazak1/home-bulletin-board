@@ -28,7 +28,8 @@ def main():
     r.close()
     album_list = list()
     for album in json.loads(r.text)['Response']['Album']:
-        album_list.append(album['AlbumKey'])
+        if album['AlbumKey'] not in config['smugmug']['ignore']:
+            album_list.append(album['AlbumKey'])
 
     image_list = list()
     # Get all the images from each album

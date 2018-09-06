@@ -2,9 +2,11 @@
   "config": {
     "smugmug": {
       "smugmug_api_key": "YOUR_API_KEY_HERE",
-      "smugmug_user": "SMUGMUG_USERNAME"
+      "smugmug_user": "SMUGMUG_USERNAME",
+      "ignore": ["LIST OF GALLERIES TO IGNORE"]
     },
     "google_calendar": "GOOGLE_CALENDAR_URL",
+    "zipcode": ZIP_CODE_FOR WEATHER_UPDATES
     "tcp_port": FLASK_TCP_LISTEN_PORT
   }
 }
