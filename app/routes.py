@@ -19,7 +19,8 @@ def index():
 def calendar():
     config = load_external_conf()
     calendar_url = config['google_calendar']
-    return render_template('calendar.html', calendar_url=calendar_url, port=config['tcp_port'])
+    return render_template('calendar.html', calendar_url=calendar_url, port=config['tcp_port'],
+                           zipcode=config['zipcode'])
 
 
 @app.route('/showsBacklog', methods=['GET', 'POST'])
