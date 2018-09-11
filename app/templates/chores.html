@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background-image: url("")
+        }
+        table {
+            border-collapse: collapse;
+            width:30%;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            font-size: 14px;
+            padding: 8px;
+            text-align: center;
+        }
+        tr:nth-child(even) {background-color: #f2f2f2;}
+        tr:hover {background-color: #ddd;}
+    </style>
+    <title>Chores Chart</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th style="padding-top: 12px;padding-bottom: 12px;background-color: #4CAF50;color: white;">Chore</th>
+            <th style="padding-top: 12px;padding-bottom: 12px;background-color: #4CAF50;color: white;">Who</th></tr>
+        <tr><th>Set The Table</th><td>{{ chores['set the table'][meal] }}</td></tr>
+        <tr><th>Clear The Table</th><td>{{ chores['clear the table'][meal] }}</td></tr>
+        <tr><th>Clean The Placements & Table</th><td>{{ chores['clean the placements'][meal] }}</td></tr>
+        <tr><th>Sweep</th><td>{{ chores['sweep'][meal] }}</td></tr>
+        <tr><th>Empty Dishwasher</th><td>{{ chores['Empty Dishwasher'] }}</td></tr>
+        <tr><th>Empty Recycle Bin</th><td>{{ chores['Empty Recycle Bin'] }}</td></tr>
+        <tr><th>Empty Regular Trash</th><td>{{ chores['Empty Regular Trash'] }}</td></tr>
+        <tr><th>Collect Trash from Upstairs</th><td>{{ chores['Collect Trash from Upstairs'] }}</td></tr>
+        <tr><th>Sweep Back Deck</th><td>{{ chores['Sweep Back Deck'] }}</td></tr>
+        <tr><th>Sweep Entrance</th><td>{{ chores['Sweep Entrance'] }}</td></tr>
+    </table>
+
+</body>
+</html>

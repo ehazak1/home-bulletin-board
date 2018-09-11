@@ -3,7 +3,8 @@ from flask import render_template, request, url_for, redirect, flash
 from app.forms import ShowUpdateForm, AddShowForm
 import json
 from random import choice
-from utils import load_shows_data, load_external_conf, update_show, sort_shows, add_show_to_list, delete_show
+from utils import load_shows_data, load_external_conf, update_show, sort_shows, add_show_to_list, delete_show, \
+    load_chores_data, day_of_week, hour_of_day
 
 
 @app.route('/index')
@@ -65,3 +66,16 @@ def add_show():
         return redirect(url_for('shows_backlog'))
 
     return render_template('add_show.html', form=form, request=request)
+
+
+@app.route('/chores')
+def chores():
+    chores_list = load_chores_data()
+    hour = hour_of_day()
+    if hour < 12:
+        meal = "b"
+    elif 17 > hour > 12:
+        meal = "l"
+    else:
+        meal = "d"
+    return render_template('chores.html', chores=chores_list[day_of_week()], meal=meal)

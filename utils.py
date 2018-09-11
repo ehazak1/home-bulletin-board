@@ -1,4 +1,15 @@
 import json
+from datetime import datetime
+
+
+def day_of_week():
+    days = {0: "monday", 1: "tuesday", 2: "wednesday", 3: "thursday", 4: "friday", 5: "saturday", 6: "sunday"}
+    today = datetime.today().weekday()
+    return days[today]
+
+
+def hour_of_day():
+    return datetime.today().hour
 
 
 def sort_shows(shows):
@@ -13,6 +24,11 @@ def load_external_conf():
 
 def load_shows_data():
     with open('app/templates/shows.json') as h:
+        return json.loads(h.read())
+
+
+def load_chores_data():
+    with open('app/templates/chores.json') as h:
         return json.loads(h.read())
 
 

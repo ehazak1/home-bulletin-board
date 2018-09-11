@@ -1,0 +1,198 @@
+{
+  "sunday": {
+    "set the table": {
+      "b": "Everybody",
+      "l": "Everybody",
+      "d": "Everybody"
+    },
+    "clear the table": {
+      "b": "Everybody",
+      "l": "Everybody",
+      "d": "Everybody"
+    },
+    "clean the placements": {
+      "b": "Ori",
+      "l": "Ariel",
+      "d": "Noga"
+    },
+    "sweep": {
+      "b": "Noga",
+      "l": "Ariel",
+      "d": "Ori"
+    },
+    "Empty Dishwasher": "Ori & Yonatan",
+    "Empty Recycle Bin": "",
+    "Empty Regular Trash": "",
+    "Collect Trash from Upstairs": "",
+    "Sweep Back Deck": "",
+    "Sweep Entrance": ""
+  },
+  "monday": {
+    "set the table": {
+      "b": "",
+      "l": "",
+      "d": "Ariel"
+    },
+    "clear the table": {
+      "b": "",
+      "l": "",
+      "d": "Ariel"
+    },
+    "clean the placements": {
+      "b": "Ariel",
+      "l": "",
+      "d": ""
+    },
+    "sweep": {
+      "b": "Ori",
+      "l": "",
+      "d": ""
+    },
+    "Empty Dishwasher": "",
+    "Empty Recycle Bin": "Ariel & Yonatan",
+    "Empty Regular Trash": "Noga",
+    "Collect Trash from Upstairs": "Noga",
+    "Sweep Back Deck": "Ariel",
+    "Sweep Entrance": ""
+  },
+  "tuesday": {
+    "set the table": {
+      "b": "",
+      "l": "",
+      "d": "Noga"
+    },
+    "clear the table": {
+      "b": "",
+      "l": "",
+      "d": "Ori"
+    },
+    "clean the placements": {
+      "b": "Noga",
+      "l": "",
+      "d": ""
+    },
+    "sweep": {
+      "b": "Ariel",
+      "l": "",
+      "d": ""
+    },
+    "Empty Dishwasher": "Noga & Yonatan",
+    "Empty Recycle Bin": "",
+    "Empty Regular Trash": "",
+    "Collect Trash from Upstairs": "",
+    "Sweep Back Deck": "",
+    "Sweep Entrance": "Noga"
+  },
+  "wednesday": {
+    "set the table": {
+      "b": "",
+      "l": "",
+      "d": "Ori"
+    },
+    "clear the table": {
+      "b": "",
+      "l": "",
+      "d": "Ori"
+    },
+    "clean the placements": {
+      "b": "Noga",
+      "l": "",
+      "d": ""
+    },
+    "sweep": {
+      "b": "Noga",
+      "l": "",
+      "d": ""
+    },
+    "Empty Dishwasher": "",
+    "Empty Recycle Bin": "",
+    "Empty Regular Trash": "",
+    "Collect Trash from Upstairs": "",
+    "Sweep Back Deck": "",
+    "Sweep Entrance": ""
+  },
+  "thursday": {
+    "set the table": {
+      "b": "",
+      "l": "",
+      "d": "Yonatan"
+    },
+    "clear the table": {
+      "b": "",
+      "l": "",
+      "d": "Noga"
+    },
+    "clean the placements": {
+      "b": "Ori",
+      "l": "",
+      "d": ""
+    },
+    "sweep": {
+      "b": "Noga",
+      "l": "",
+      "d": ""
+    },
+    "Empty Dishwasher": "Ori & Yonatan",
+    "Empty Recycle Bin": "",
+    "Empty Regular Trash": "",
+    "Collect Trash from Upstairs": "",
+    "Sweep Back Deck": "",
+    "Sweep Entrance": ""
+  },
+  "friday": {
+    "set the table": {
+      "b": "",
+      "l": "",
+      "d": "Ariel, Noga & Yonatan"
+    },
+    "clear the table": {
+      "b": "",
+      "l": "",
+      "d": "Ori"
+    },
+    "clean the placements": {
+      "b": "Ariel",
+      "l": "",
+      "d": ""
+    },
+    "sweep": {
+      "b": "Ariel",
+      "l": "",
+      "d": ""
+    },
+    "Empty Dishwasher": "",
+    "Empty Recycle Bin": "Ariel & Yonatan",
+    "Empty Regular Trash": "",
+    "Collect Trash from Upstairs": "",
+    "Sweep Back Deck": "Yonatan",
+    "Sweep Entrance": ""
+  },
+  "saturday": {
+    "set the table": {
+      "b": "Everybody",
+      "l": "Everybody",
+      "d": "Everybody"
+    },
+    "clear the table": {
+      "b": "Everybody",
+      "l": "Everybody",
+      "d": "Everybody"
+    },
+    "clean the placements": {
+      "b": "Ariel",
+      "l": "Ori",
+      "d": "Noga"
+    },
+    "sweep": {
+      "b": "Noga",
+      "l": "Ariel",
+      "d": "Ori"
+    },
+    "Empty Dishwasher": "Noga & Ariel",
+    "Empty Recycle Bin": "",
+    "Empty Regular Trash": "",
+    "Collect Trash from Upstairs": "",
+    "Sweep Back Deck": "",
+    "Sweep Entrance": "Ori"
+  }
+}
