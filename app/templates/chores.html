@@ -4,30 +4,32 @@
     <meta charset="UTF-8">
     <style>
         body {
-            background-image: url("")
+            background: #1c41b0;
         }
         table {
-            border-collapse: collapse;
-            width:30%;
-            font-family: "Comic Sans MS", cursive, sans-serif;
-        }
-
-        table, th, td {
-            border: 1px solid #ddd;
-            font-size: 14px;
-            padding: 8px;
+            width: 800px;
+            margin: auto;
             text-align: center;
+            table-layout: fixed;
         }
-        tr:nth-child(even) {background-color: #f2f2f2;}
-        tr:hover {background-color: #ddd;}
+        table, tr, th, td {
+            padding: 20px;
+            color: white;
+            border: 1px solid #080808;
+            border-collapse: collapse;
+            font-size: 18px;
+            font-family: "Comic Sans MS", cursive, sans-serif;;
+            background:linear-gradient(top, #96deda 0%, #50c9c3 100%);
+            background:-webkit-linear-gradient(top, #96deda 0%, #50c9c3 100%);
+        }
     </style>
     <title>Chores Chart</title>
 </head>
 <body>
     <table>
         <tr>
-            <th style="padding-top: 12px;padding-bottom: 12px;background-color: #4CAF50;color: white;">Chore</th>
-            <th style="padding-top: 12px;padding-bottom: 12px;background-color: #4CAF50;color: white;">Who</th></tr>
+            <th>Chore</th>
+            <th>Who</th></tr>
         <tr><th>Set The Table</th><td>{{ chores['set the table'][meal] }}</td></tr>
         <tr><th>Clear The Table</th><td>{{ chores['clear the table'][meal] }}</td></tr>
         <tr><th>Clean The Placements & Table</th><td>{{ chores['clean the placements'][meal] }}</td></tr>
