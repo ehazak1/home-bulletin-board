@@ -74,5 +74,10 @@ def delete_show(name):
     write_shows_data(new_shows)
 
 
+def create_viewed_images_file(filename):
+    with open(filename, 'w') as f:
+        empty_list = []
+        f.write(json.dumps(empty_list))
+
 
 

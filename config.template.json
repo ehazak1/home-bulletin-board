@@ -5,6 +5,10 @@
       "smugmug_user": "SMUGMUG_USERNAME",
       "ignore": ["LIST OF GALLERIES TO IGNORE"]
     },
+    "picrure_frame": {
+      "image_list": "FILENAME_FOR_DAILY_COLLECTED_IMAGES",
+      "viewed_image_list": "FILENAME_FOR_VIEWED_IMAGES"
+    },
     "google_calendar": "GOOGLE_CALENDAR_URL",
     "zipcode": ZIP_CODE_FOR WEATHER_UPDATES
     "tcp_port": FLASK_TCP_LISTEN_PORT

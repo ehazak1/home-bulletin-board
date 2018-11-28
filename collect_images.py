@@ -47,7 +47,7 @@ def main():
             image_list.append(fix_img_url(image['ThumbnailUrl']))
         n += 1
 
-    with open("image_list.lst", "w") as h:
+    with open(config['picture_frame']['image_list'], "w") as h:
         h.write(json.dumps(image_list))
 
 
