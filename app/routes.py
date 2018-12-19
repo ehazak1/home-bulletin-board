@@ -6,28 +6,34 @@ from random import choice
 from utils import load_shows_data, load_external_conf, update_show, sort_shows, add_show_to_list, delete_show, \
     load_chores_data, day_of_week, hour_of_day, create_viewed_images_file
 from pathlib import Path
+import logging
 
 
 @app.route('/index')
 @app.route('/')
 def index():
+    logging.info("Opening configuration")
     with open("config.json") as f:
         config = json.loads(f.read())
     images_list_file = config['picture_frame']['image_list']
     viewed_images_file = config['picture_frame']['viewed_image_list']
 
+    logging.info("Creating image list")
     with open(images_list_file) as h:
         images = json.loads(h.read())
 
+    logging.info("Checking/Creating viewed picture list")
     if not Path(viewed_images_file).is_file():
         create_viewed_images_file(viewed_images_file)
 
+    logging.info("Opening viewed images list for comparison/writing")
     with open(viewed_images_file) as f:
         viewed_images = json.loads(f.read())
         if len(viewed_images) == len(images):
             viewed_images = []
             create_viewed_images_file(viewed_images_file)
 
+    logging.info("Choosing picture, and checking against viewed file list")
     while True:
         image_to_show = choice(images)
         if image_to_show in viewed_images:
@@ -36,7 +42,7 @@ def index():
         with open(viewed_images_file, 'w') as f:
             f.write(json.dumps(viewed_images))
         break
-
+    logging.info("Rendering image: {}".format(image_to_show))
     return render_template('index.html', image=image_to_show)
 
 
