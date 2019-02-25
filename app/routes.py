@@ -28,8 +28,7 @@ def index():
             viewed_images = []
             create_viewed_images_file(viewed_images_file)
 
-    while True:
-        image_to_show = choice(images)
+    for image_to_show in images:
         if image_to_show in viewed_images:
             continue
         viewed_images.append(image_to_show)
