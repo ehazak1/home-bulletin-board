@@ -23,13 +23,21 @@ def main():
     r = requests.get(request_url, headers=headers)
     r.close()
     count = json.loads(r.text)['Response']['Pages']['Total']
-    albums_url = "{}&start=1&count={}".format(request_url, count)
-    r = requests.get(albums_url, headers=headers)
-    r.close()
+    pages = int(count / 100)
+    print("Found a total of {} albums spread over {} pages".format(count, pages))
+    i = 0
+    to_album = 0
     album_list = list()
-    for album in json.loads(r.text)['Response']['Album']:
-        if album['AlbumKey'] not in config['smugmug']['ignore']:
-            album_list.append(album['AlbumKey'])
+    while i <= pages:
+        from_album = to_album + 1
+        to_album = i*100 + 100
+        albums_url = "{}&start={}&count={}".format(request_url, from_album, to_album)
+        r = requests.get(albums_url, headers=headers)
+        r.close()
+        for album in json.loads(r.text)['Response']['Album']:
+            if album['AlbumKey'] not in config['smugmug']['ignore']:
+                album_list.append(album['AlbumKey'])
+        i+=1
 
     image_list = list()
     # Get all the images from each album
