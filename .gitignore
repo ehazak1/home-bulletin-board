@@ -5,3 +5,5 @@ old_site/*
 config.json
 *.lock
 *.diff
+.DS_Store
+*.pyc
