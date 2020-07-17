@@ -7,8 +7,8 @@ API_BASE_URL = "https://api.smugmug.com/api/v2/"
 
 def fix_img_url(url):
     url_broken = url.split('/')
-    url_broken[-1] = url_broken[-1].replace('Th', 'XL')
-    url_broken[-2] = url_broken[-2].replace('Th', 'XL')
+    url_broken[-1] = url_broken[-1].replace('Th', 'X5')
+    url_broken[-2] = url_broken[-2].replace('Th', 'X5')
     return "/".join(url_broken)
 
 
