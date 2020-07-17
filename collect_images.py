@@ -26,12 +26,13 @@ def main():
     pages = int(count / 100)
     print("Found a total of {} albums spread over {} pages".format(count, pages))
     i = 0
-    to_album = 0
+    next_from = 0
     album_list = list()
     while i <= pages:
-        from_album = to_album + 1
-        to_album = i*100 + 100
-        albums_url = "{}&start={}&count={}".format(request_url, from_album, to_album)
+        from_album = next_from + 1
+        next_from = i*100 + 100
+        albums_url = "{}&start={}&count=100".format(request_url, from_album)
+        print(albums_url)
         r = requests.get(albums_url, headers=headers)
         r.close()
         for album in json.loads(r.text)['Response']['Album']:
@@ -43,9 +44,19 @@ def main():
     # Get all the images from each album
     n = 1
     for album_key in album_list:
+        # Is this a CFJC album?
+        album_url = "{}album/{}?APIKey={}".format(API_BASE_URL, album_key, api_key)
+        r = requests.get(album_url, headers=headers)
+        r.close()
+        if 'SSC' not in json.loads(r.text)['Response']['Album']['WebUri']:
+            print('Skipping Album ({}/{}): {}'.format(n, len(album_list), json.loads(r.text)['Response']['Album']['UrlName']))
+            n += 1
+            continue
+        print('collecting images from: {}'.format(json.loads(r.text)['Response']['Album']['UrlName']))
         album_images_base_uri = "https://api.smugmug.com/api/v2/album/{}!images?APIKey={}".format(album_key, api_key)
         print("Collecting images from: {} ({}/{})".format(album_key, n, len(album_list)))
         r = requests.get(album_images_base_uri, headers=headers)
+        r.close()
         try:
             image_list_response = json.loads(r.text)['Response']['AlbumImage']
         except KeyError:
