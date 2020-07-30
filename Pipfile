@@ -9,9 +9,9 @@ flask = "*"
 flask_wtf = "*"
 wtforms = "*"
 gunicorn = "*"
+beautifulsoup4 = "*"
 
 [dev-packages]
-pylint = "*"
 
 [requires]
 python_version = "3"
