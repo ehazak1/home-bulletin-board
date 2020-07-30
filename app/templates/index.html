@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap-reboot.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='tether/tether.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='dropdown/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='datatables/data-tables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='theme/css/style.css') }}">
     <link rel="preload" as="style" href="{{ url_for('static', filename='mobirise/css/mbr-additional.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='mobirise/css/mbr-additional.css') }}" type="text/css">  
@@ -47,11 +48,76 @@
         </div>
     </nav>
 </section>
-
+{% if slide_show %}
 <section class="engine"><a href="https://mobirise.info/k"></a></section>
 <section class="cid-s4W4YOMH6Q" id="image2-3" style="background-color: #232323;">
     <iframe src="https://ehazak.smugmug.com/frame/slideshow?key=P7RzQt&speed=5&transition=fade&autoStart=1&captions=0&navigation=0&playButton=0&randomize=1&transitionSpeed=2" width="1366" height="768" frameborder="no" scrolling="no"></iframe>>
 </section>
+{% else %}
+<section class="engine"><a href="https://mobirise.info/o">portfolio site templates</a></section><section class="section-table cid-s6fYUwWwhP" id="table1-a">
+    <div class="container container-table">
+        <br><br>
+        <h2 class="mbr-section-title mbr-fonts-style align-center pb-4 display-1"><br>Daily Standings - {{ day }}</h2>
+        {% for skill in results %}
+        {% if skill['results']|length != 0 %}
+        <h3 class="mbr-section-subtitle mbr-fonts-style align-center pb-6 mbr-light display-2">{{ skill['type'] }}: {{ skill['skill_name'] }}</h3>
+        <div class="table-wrapper">
+            <div class="container">
+            </div>
+            <div class="container scroll">
+              <table class="table" cellspacing="0" data-empty="No matching records found" style="background-color:white">
+                <thead>
+                  <tr class="table-heads ">
+                      <th class="head-item mbr-fonts-style display-7" style="width:300px">NAME</th>
+                      <th class="head-item mbr-fonts-style display-7" style="width:200px">Standing</th>
+                      <th class="head-item mbr-fonts-style display-7" style="width:200px">Result</th>
+                      <th class="head-item mbr-fonts-style display-7" style="width:200px">RX ?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for res in skill['results'] %}
+                    <tr> 
+                    <td class="body-item mbr-fonts-style display-7">{{ res['Name'] }}</td>
+                    <td class="body-item mbr-fonts-style display-7">{{ res['standing'] }}</td>
+                    <td class="body-item mbr-fonts-style display-7">{{ res['result'] }}</td>
+                    <td class="body-item mbr-fonts-style display-7">{% if res['rx'] %}RX{% else %}&nbsp;{% endif %}</td></tr>
+                    <tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+              <br>
+        {% endif %}
+        {% endfor %} 
+        <!--
+        <div class="table-wrapper">
+          <div class="container">
+          </div>
+          <div class="container scroll">
+            <table class="table" cellspacing="0" data-empty="No matching records found" style="background-color:white">
+              <thead>
+                <tr class="table-heads ">
+                    <th class="head-item mbr-fonts-style display-7" style="width:300px">NAME</th>
+                    <th class="head-item mbr-fonts-style display-7" style="width:200px">Standing</th>
+                    <th class="head-item mbr-fonts-style display-7" style="width:200px">Result</th>
+                    <th class="head-item mbr-fonts-style display-7" style="width:200px">RX ?</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr> 
+                <td class="body-item mbr-fonts-style display-7">Chris Treadwell</td><td class="body-item mbr-fonts-style display-7">1</td><td class="body-item mbr-fonts-style display-7">125 lbs.</td><td class="body-item mbr-fonts-style display-7">RX</td></tr><tr>
+                <td class="body-item mbr-fonts-style display-7">Walter Comeaux</td><td class="body-item mbr-fonts-style display-7">2</td><td class="body-item mbr-fonts-style display-7">105 lbs.</td><td class="body-item mbr-fonts-style display-7">RX</td></tr><tr>
+                <td class="body-item mbr-fonts-style display-7">Adam Long</td><td class="body-item mbr-fonts-style display-7">3</td><td class="body-item mbr-fonts-style display-7">100 lbs.</td><td class="body-item mbr-fonts-style display-7">RX</td></tr><tr>
+                <td class="body-item mbr-fonts-style display-7">Randi Rubin</td><td class="body-item mbr-fonts-style display-7">4</td><td class="body-item mbr-fonts-style display-7">32 lbs.</td><td class="body-item mbr-fonts-style display-7">&nbsp;</td></tr></tbody>
+            </table>
+            -->
+            <br>
+          </div>
+          <div class="container table-info-container">
+          </div>
+        </div>
+      </div>
+  </section>
+{% endif %}
 
 <section once="footers" class="cid-s51071AucX" id="footer6-6">
     <div class="container">
@@ -72,6 +138,8 @@
   <script src="{{ url_for('static', filename='dropdown/js/nav-dropdown.js') }}"></script>
   <script src="{{ url_for('static', filename='dropdown/js/navbar-dropdown.js') }}"></script>
   <script src="{{ url_for('static', filename='touchswipe/jquery.touch-swipe.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='datatables/jquery.data-tables.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='datatables/data-tables.bootstrap4.min.js') }}"></script>
   <script src="{{ url_for('static', filename='theme/js/script.js') }}"></script>
   
   

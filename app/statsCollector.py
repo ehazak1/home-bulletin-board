@@ -6,7 +6,7 @@ import logging
 
 class statsCollector():
     ''' This class will handle collecting stats from the leaders page on cfjc'''
-    def __init__(self, day):
+    def __init__(self, day=None):
         self.base_url = 'https://crossfitjohnscreek.sites.zenplanner.com/workout-leaderboard-daily-results.cfm?'
         if not day:
             today = date.today()
