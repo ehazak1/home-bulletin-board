@@ -57,6 +57,11 @@ class statsCollector():
             for skillbox in skillboxes:
                 skill = {}
                 skill['skill_name'] = skillbox.find_next('h2').find('a').contents[0]
+                skills_list = ['squat', 'deadlift', 'snatch', 'clean', 'jerk', 'press']
+                if any(skill_element in skill['skill_name'].lower() for skill_element in skills_list):
+                    skill['type'] = 'Strength/Skill'
+                else:
+                    skill['type'] = 'Conditioning'
                 results = skillbox.find_all('div', attrs={'class': 'personResult'})
                 results_data = []
                 for result in results:
