@@ -41,6 +41,8 @@ class statsCollector():
                 option = page.find_all('option', attrs={'type': type})[0]
             except IndexError:
                 continue
+            except AttributeError:
+                continue
             sessions.append({
                 'name': option.contents[0].strip(),
                 'type': option.attrs.get('type'), 
@@ -49,7 +51,7 @@ class statsCollector():
 
 
     def get_daily_results(self):
-        daily_results = []
+        daily_results = {}
         sessions = self.get_sessions()
         for session in sessions:
             page = self.open_stats_page(session)
@@ -57,6 +59,7 @@ class statsCollector():
             for skillbox in skillboxes:
                 skill = {}
                 skill['skill_name'] = skillbox.find_next('h2').find('a').contents[0]
+                daily_results[skill['skill_name']] = []
                 skills_list = ['squat', 'deadlift', 'snatch', 'clean', 'jerk', 'press']
                 if any(skill_element in skill['skill_name'].lower() for skill_element in skills_list):
                     skill['type'] = 'Strength/Skill'
@@ -79,7 +82,7 @@ class statsCollector():
                         parsed_res['rx'] = False
                         results_data.append(parsed_res)
                 skill['results'] = results_data
-                daily_results.append(skill)
+                daily_results[skill['skill_name']].append(skill)
         return daily_results
 
         

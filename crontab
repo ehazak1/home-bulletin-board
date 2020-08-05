@@ -1,2 +1,0 @@
-# Pull the list of images from Smugmug every night at 1am
-00 01 * * * /bin/bash /home/pi/picture_frame/scripts/collect_images.sh >> /home/pi/picture_frame/smugmug_collection.log  2>&1

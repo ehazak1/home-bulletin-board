@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/cfjc-log.png') }}" type="image/x-icon">
     <meta name="description" content="">
-    <!--<meta http-equiv="Refresh" content="60">-->
+    <meta http-equiv="Refresh" content="15">
 
     <title>Crossfit Johns Creek</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='datatables/data-tables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='theme/css/style.css') }}">
     <link rel="preload" as="style" href="{{ url_for('static', filename='mobirise/css/mbr-additional.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='mobirise/css/mbr-additional.css') }}" type="text/css">  
+    <link rel="stylesheet" href="{{ url_for('static', filename='mobirise/css/mbr-additional.css') }}" type="text/css"> 
 </head>
 <body>
   <section class="menu cid-s4W2RXeSPd" once="menu" id="menu2-1">
@@ -39,7 +39,7 @@
                 </span>
                 <span class="navbar-caption-wrap">
                     <a class="navbar-caption text-white display-2" href="https://ssfit.com">
-                        CrossFit Johns Creek
+                        CrossFit Johns Creek - {{ day }}
                     </a>
                 </span>
             </div>
@@ -51,13 +51,16 @@
 {% if slide_show %}
 <section class="engine"><a href="https://mobirise.info/k"></a></section>
 <section class="cid-s4W4YOMH6Q" id="image2-3" style="background-color: #232323;">
-    <iframe src="https://ehazak.smugmug.com/frame/slideshow?key=P7RzQt&speed=5&transition=fade&autoStart=1&captions=0&navigation=0&playButton=0&randomize=1&transitionSpeed=2" width="1366" height="768" frameborder="no" scrolling="no"></iframe>>
+    <p align="center">
+        <br><br><br><br><br>
+        <iframe src="https://ehazak.smugmug.com/frame/slideshow?key=P7RzQt&speed=5&transition=fade&autoStart=1&captions=0&navigation=0&playButton=0&randomize=1&transitionSpeed=2" width="1360" height="768" frameborder="no" scrolling="no"></iframe>
+        <br><br>
+    </p>
 </section>
 {% else %}
 <section class="engine"><a href="https://mobirise.info/o">portfolio site templates</a></section><section class="section-table cid-s6fYUwWwhP" id="table1-a">
     <div class="container container-table">
-        <br><br>
-        <h2 class="mbr-section-title mbr-fonts-style align-center pb-4 display-1"><br>Daily Standings - {{ day }}</h2>
+        <br><br><br><br><br>
         {% for skill in results %}
         {% if skill['results']|length != 0 %}
         <h3 class="mbr-section-subtitle mbr-fonts-style align-center pb-6 mbr-light display-2">{{ skill['type'] }}: {{ skill['skill_name'] }}</h3>
@@ -87,29 +90,7 @@
               </table>
               <br>
         {% endif %}
-        {% endfor %} 
-        <!--
-        <div class="table-wrapper">
-          <div class="container">
-          </div>
-          <div class="container scroll">
-            <table class="table" cellspacing="0" data-empty="No matching records found" style="background-color:white">
-              <thead>
-                <tr class="table-heads ">
-                    <th class="head-item mbr-fonts-style display-7" style="width:300px">NAME</th>
-                    <th class="head-item mbr-fonts-style display-7" style="width:200px">Standing</th>
-                    <th class="head-item mbr-fonts-style display-7" style="width:200px">Result</th>
-                    <th class="head-item mbr-fonts-style display-7" style="width:200px">RX ?</th>
-                </tr>
-              </thead>
-              <tbody>
-              <tr> 
-                <td class="body-item mbr-fonts-style display-7">Chris Treadwell</td><td class="body-item mbr-fonts-style display-7">1</td><td class="body-item mbr-fonts-style display-7">125 lbs.</td><td class="body-item mbr-fonts-style display-7">RX</td></tr><tr>
-                <td class="body-item mbr-fonts-style display-7">Walter Comeaux</td><td class="body-item mbr-fonts-style display-7">2</td><td class="body-item mbr-fonts-style display-7">105 lbs.</td><td class="body-item mbr-fonts-style display-7">RX</td></tr><tr>
-                <td class="body-item mbr-fonts-style display-7">Adam Long</td><td class="body-item mbr-fonts-style display-7">3</td><td class="body-item mbr-fonts-style display-7">100 lbs.</td><td class="body-item mbr-fonts-style display-7">RX</td></tr><tr>
-                <td class="body-item mbr-fonts-style display-7">Randi Rubin</td><td class="body-item mbr-fonts-style display-7">4</td><td class="body-item mbr-fonts-style display-7">32 lbs.</td><td class="body-item mbr-fonts-style display-7">&nbsp;</td></tr></tbody>
-            </table>
-            -->
+        {% endfor %}
             <br>
           </div>
           <div class="container table-info-container">
@@ -118,17 +99,6 @@
       </div>
   </section>
 {% endif %}
-
-<section once="footers" class="cid-s51071AucX" id="footer6-6">
-    <div class="container">
-        <div class="media-container-row align-center mbr-white">
-            <div class="col-12"  style="background-color: #232323;">
-                <p class="mbr-text mb-0 mbr-fonts-style display-7"></p>
-            </div>
-        </div>
-    </div>
-</section>
-
 
   <script src="{{ url_for('static', filename='web/assets/jquery/jquery.min.js') }}"></script>
   <script src="{{ url_for('static', filename='popper/popper.min.js') }}"></script>
