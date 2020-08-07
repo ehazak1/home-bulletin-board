@@ -20,9 +20,48 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='theme/css/style.css') }}">
     <link rel="preload" as="style" href="{{ url_for('static', filename='mobirise/css/mbr-additional.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='mobirise/css/mbr-additional.css') }}" type="text/css"> 
+
+    <script type="text/javascript" src="{{ url_for('static', filename='web/assets/jquery/jquery.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            var width = $(window).width();
+            var height = $(window).height();
+            $("#slideshow").attr("width", width);
+            $("#slideshow").attr("height", height);
+        });
+    </script>
 </head>
 <body>
+    {% if slide_show %}
     <section class="menu cid-s4W2RXeSPd" once="menu" id="menu2-1">
+        <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-toggleable-sm collapsed bg-color transparent">
+            <!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>-->
+            <div class="menu-logo">
+                <div class="navbar-brand">
+                    <span class="navbar-logo">
+                        <img src="{{ url_for('static', filename='images/cfjc-log.png') }}" style="height: 5.8rem;">
+                    </span>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+        </nav>
+    </section>
+    <section class="cid-s6ZOJM0ubS" id="image2-h">
+        <figure class="mbr-figure">
+            <div class="image-block" style="width: 100%;">
+                <iframe id="slideshow" src="https://ehazak.smugmug.com/frame/slideshow?key=P7RzQt&speed=7&transition=fade&autoStart=1&captions=0&navigation=0&playButton=0&randomize=1&transitionSpeed=2" width="1360" width="768" frameborder="no" scrolling="no"></iframe>
+            </div>
+        </figure>
+    </section>
+    {% else %}
+    <section class="menu cid-s4W2RXeSPd" once="menu" id="menu2-1" style="display: block;">
         <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="hamburger">
@@ -35,10 +74,10 @@
             <div class="menu-logo">
                 <div class="navbar-brand">
                     <span class="navbar-logo">
-                            <img src="{{ url_for('static', filename='images/cfjc-log.png') }}" alt="Mobirise" title="" style="height: 5.8rem;">
+                            <img src="{{ url_for('static', filename='images/cfjc-log.png') }}" style="height: 5.8rem;">
                     </span>
                     <span class="navbar-caption-wrap">
-                        <a class="navbar-caption text-white display-2" href="https://ssfit.com">
+                        <a class="navbar-caption text-white display-2" href="https://crossfit-johnscreek.com">
                             CrossFit Johns Creek - {{ day }}
                         </a>
                     </span>
@@ -48,53 +87,51 @@
             </div>
         </nav>
     </section>
-    {% if slide_show %}
-    <section class="engine"><a href="https://mobirise.info/k"></a></section>
-    <section class="cid-s4W4YOMH6Q" id="image2-3" style="background-color: #232323;">
-        <p align="center">
-            <br><br><br><br><br>
-            <iframe src="https://ehazak.smugmug.com/frame/slideshow?key=P7RzQt&speed=5&transition=fade&autoStart=1&captions=0&navigation=0&playButton=0&randomize=1&transitionSpeed=2" width="1360" height="768" frameborder="no" scrolling="no"></iframe>
-            <br><br>
-        </p>
-    </section>
-    {% else %}
-    <section class="engine"><a href="https://mobirise.info/o">portfolio site templates</a></section><section class="section-table cid-s6fYUwWwhP" id="table1-a">
-        <div class="container container-table">
-            <br><br><br><br><br>
-            {% for skill in results %}
-            {% if skill['results']|length != 0 %}
-            <h3 class="mbr-section-subtitle mbr-fonts-style align-center pb-6 mbr-light display-2">{{ skill['type'] }}: {{ skill['skill_name'] }}</h3>
-            <div class="table-wrapper">
-                <div class="container">
+
+    <section class="engine"><a href="https://mobirise.info/o">portfolio site templates</a></section>
+        <section class="section-table cid-s6fYUwWwhP" id="table1-a">
+            <div class="container container-table">
+                <br><br><br><br><br>
+                {% for skill in results %}
+                {% if skill['results']|length != 0 %}
+                <h3 class="mbr-section-subtitle mbr-fonts-style align-center pb-6 mbr-light display-2">{{ skill['type'] }}: {{ skill['skill_name'] }}</h3>
+                <div class="table-wrapper">
+                    <div class="container"></div>
+                    <div class="container scroll">
+                        <table class="table" cellspacing="0" data-empty="No matching records found" style="background-color:white">
+                            <thead>
+                            <tr class="table-heads ">
+                                <th class="head-item mbr-fonts-style display-7" style="width:300px">NAME</th>
+                                <th class="head-item mbr-fonts-style display-7" style="width:200px">Standing</th>
+                                <th class="head-item mbr-fonts-style display-7" style="width:200px">Result</th>
+                                <th class="head-item mbr-fonts-style display-7" style="width:200px">RX ?</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for res in skill['results'] %}
+                                <tr> 
+                                <td class="body-item mbr-fonts-style display-7">{{ res['Name'] }}</td>
+                                <td class="body-item mbr-fonts-style display-7">{{ res['standing'] }}</td>
+                                <td class="body-item mbr-fonts-style display-7">{{ res['result'] }}</td>
+                                <td class="body-item mbr-fonts-style display-7">{% if res['rx'] %}RX{% else %}&nbsp;{% endif %}</td></tr>
+                                <tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <br>
+                        <br>
+                {% endif %}
+                {% endfor %}
                 </div>
-                <div class="container scroll">
-                <table class="table" cellspacing="0" data-empty="No matching records found" style="background-color:white">
-                    <thead>
-                    <tr class="table-heads ">
-                        <th class="head-item mbr-fonts-style display-7" style="width:300px">NAME</th>
-                        <th class="head-item mbr-fonts-style display-7" style="width:200px">Standing</th>
-                        <th class="head-item mbr-fonts-style display-7" style="width:200px">Result</th>
-                        <th class="head-item mbr-fonts-style display-7" style="width:200px">RX ?</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        {% for res in skill['results'] %}
-                        <tr> 
-                        <td class="body-item mbr-fonts-style display-7">{{ res['Name'] }}</td>
-                        <td class="body-item mbr-fonts-style display-7">{{ res['standing'] }}</td>
-                        <td class="body-item mbr-fonts-style display-7">{{ res['result'] }}</td>
-                        <td class="body-item mbr-fonts-style display-7">{% if res['rx'] %}RX{% else %}&nbsp;{% endif %}</td></tr>
-                        <tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                <br>
-            {% endif %}
-            {% endfor %}
-                <br>
+                <div class="container table-info-container"></div>
             </div>
-            <div class="container table-info-container">
-            </div>
+        </section>
+    </section>
+    <section class="header1 cid-s6TENK1x26 mbr-fullscreen" id="header16-d">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-md-10 align-center">
+                </div>
             </div>
         </div>
     </section>
@@ -111,7 +148,5 @@
     <script src="{{ url_for('static', filename='datatables/jquery.data-tables.min.js') }}"></script>
     <script src="{{ url_for('static', filename='datatables/data-tables.bootstrap4.min.js') }}"></script>
     <script src="{{ url_for('static', filename='theme/js/script.js') }}"></script>
-  
-  
 </body>
 </html>
