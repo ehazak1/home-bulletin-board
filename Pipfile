@@ -8,8 +8,8 @@ requests = "*"
 flask = "*"
 flask_wtf = "*"
 wtforms = "*"
-gunicorn = "*"
 beautifulsoup4 = "*"
+uwsgi = "*"
 
 [dev-packages]
 
