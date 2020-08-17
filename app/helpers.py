@@ -21,6 +21,8 @@ def make_display_decision(display, display_session, results):
         # Skip empty results 
         if len(res[0]['results']) == 0:
             display += 1
+            if display >= len(display_session):
+                display = 0
             res = results[display_session[display]]
         display_slideshow = False
     else:
