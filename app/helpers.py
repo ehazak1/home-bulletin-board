@@ -19,7 +19,7 @@ def make_display_decision(display, display_session, results):
     if display < len(display_session):
         res = results[display_session[display]]
         # Skip empty results 
-        if len(res[0]['results']) == 0:
+        while len(res[0]['results']) == 0:
             display += 1
             if display >= len(display_session):
                 display = 0
