@@ -6,8 +6,6 @@ name = "pypi"
 [packages]
 requests = "*"
 flask = "*"
-flask_wtf = "*"
-wtforms = "*"
 beautifulsoup4 = "*"
 uwsgi = "*"
 

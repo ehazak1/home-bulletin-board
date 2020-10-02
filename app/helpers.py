@@ -1,6 +1,7 @@
 from flask import request
 import json
 from time import time
+from os import chmod
 
 def cookie_setup(display_session):
     display = request.cookies.get('display')
@@ -49,4 +50,5 @@ def check_stale_data(stats):
         with open('results.json', "w") as f:
             f.write(json.dumps(results))
         last_updated = int(time())
+    chmod('results.json', 0o666)
     return last_updated, results

@@ -5,7 +5,9 @@ old_site/*
 config.json
 *.lock
 *.diff
+.vscode/*
 .DS_Store
 *.pyc
 app/new_site
 app/new_site/project.mobirise
+results.json
