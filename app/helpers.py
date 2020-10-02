@@ -1,7 +1,7 @@
 from flask import request
 import json
 from time import time
-from os import chmod
+from pathlib import Path
 
 def cookie_setup(display_session):
     display = request.cookies.get('display')
@@ -33,6 +33,12 @@ def make_display_decision(display, display_session, results):
     return res, display_slideshow
 
 
+def write_results(results):
+    Path('results.json').touch(mode=0o666, exist_ok=True)
+    with open('results.json') as f:
+        f.write(json.dumps(results))
+
+
 def check_stale_data(stats):
     last_updated_cookie = request.cookies.get('cfjc_res_updated')
     if last_updated_cookie:
@@ -42,13 +48,10 @@ def check_stale_data(stats):
                 results = json.loads(f.read())
         else:
             results = stats.get_daily_results()
-            with open('results.json', "w") as f:
-                f.write(json.dumps(results))
+            write_results(results)
             last_updated = int(time())
     else:
         results = stats.get_daily_results()
-        with open('results.json', "w") as f:
-            f.write(json.dumps(results))
+        write_results(results)
         last_updated = int(time())
-    chmod('results.json', 0o666)
     return last_updated, results
