@@ -35,7 +35,7 @@ def make_display_decision(display, display_session, results):
 
 def write_results(results):
     Path('results.json').touch(mode=0o666, exist_ok=True)
-    with open('results.json') as f:
+    with open('results.json', 'w') as f:
         f.write(json.dumps(results))
 
 
