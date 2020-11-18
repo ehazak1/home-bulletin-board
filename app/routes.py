@@ -1,5 +1,6 @@
 from app import app
 from flask import render_template, request, url_for, make_response
+from flask_api import status
 import logging
 from .statsCollector import statsCollector
 from .helpers import *
@@ -30,3 +31,9 @@ def index(day=None):
     resp.set_cookie('cfjc_res_updated', str(last_updated))
     
     return resp
+
+
+@app.route('/healthcheck', methods=['GET'])
+def healthcheck():
+    content = {'status': 'healthy'}
+    return content, status.HTTP_200_OK
