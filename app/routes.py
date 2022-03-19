@@ -8,46 +8,7 @@ from utils import load_shows_data, load_external_conf, update_show, sort_shows, 
 from pathlib import Path
 
 
-@app.route('/index')
-@app.route('/')
-def index():
-    with open("config.json") as f:
-        config = json.loads(f.read())
-    images_list_file = config['picture_frame']['image_list']
-    viewed_images_file = config['picture_frame']['viewed_image_list']
-
-    with open(images_list_file) as h:
-        images = json.loads(h.read())
-
-    if not Path(viewed_images_file).is_file():
-        create_viewed_images_file(viewed_images_file)
-
-    with open(viewed_images_file) as f:
-        viewed_images = json.loads(f.read())
-        if len(viewed_images) == len(images):
-            viewed_images = []
-            create_viewed_images_file(viewed_images_file)
-
-    for image_to_show in images:
-        if image_to_show in viewed_images:
-            continue
-        viewed_images.append(image_to_show)
-        with open(viewed_images_file, 'w') as f:
-            f.write(json.dumps(viewed_images))
-        break
-
-    return render_template('index.html', image=image_to_show)
-
-
-@app.route('/calendar')
-def calendar():
-    config = load_external_conf()
-    calendar_url = config['google_calendar']
-    return render_template('calendar.html', calendar_url=calendar_url, port=config['tcp_port'],
-                           zipcode=config['zipcode'])
-
-
-@app.route('/showsBacklog', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 def shows_backlog():
     config = load_external_conf()
     form = ShowUpdateForm()
@@ -70,6 +31,11 @@ def shows_backlog():
     return render_template('shows_backlog.html', shows=shows, form=form, request=request, port=config['tcp_port'])
 
 
+@app.route('/newindex', methods=['GET'])
+def new_backlog():
+    return render_template('new_index.html')
+    
+
 @app.route('/addShow', methods=['GET', 'POST'])
 def add_show():
     form = AddShowForm()
@@ -90,15 +56,3 @@ def add_show():
 
     return render_template('add_show.html', form=form, request=request)
 
-
-@app.route('/chores')
-def chores():
-    chores_list = load_chores_data()
-    hour = hour_of_day()
-    if hour < 12:
-        meal = "b"
-    elif 17 > hour > 12:
-        meal = "l"
-    else:
-        meal = "d"
-    return render_template('chores.html', chores=chores_list[day_of_week()], meal=meal)

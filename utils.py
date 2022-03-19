@@ -19,7 +19,7 @@ def sort_shows(shows):
 def load_external_conf():
     with open("config.json") as h:
         config = json.loads(h.read())
-    return config
+    return config['config']
 
 
 def load_shows_data():
