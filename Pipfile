@@ -11,6 +11,7 @@ wtforms = "*"
 
 [dev-packages]
 pylint = "*"
+ipykernel = "*"
 
 [requires]
 python_version = "3"

@@ -2,16 +2,6 @@ import json
 from datetime import datetime
 
 
-def day_of_week():
-    days = {0: "monday", 1: "tuesday", 2: "wednesday", 3: "thursday", 4: "friday", 5: "saturday", 6: "sunday"}
-    today = datetime.today().weekday()
-    return days[today]
-
-
-def hour_of_day():
-    return datetime.today().hour
-
-
 def sort_shows(shows):
     return sorted(shows, key=lambda k: k.get('priority', 0), reverse=False)
 
@@ -22,18 +12,37 @@ def load_external_conf():
     return config['config']
 
 
+def load_title_data(type):
+    if type == 1:
+        filename = "shows"
+    elif type == 2:
+        filename = "movies"
+    else:
+        filename =   "comedies"
+
+    with open('app/templates/{}.json'.format(filename)) as h:
+        data = json.loads(h.read())
+        titles = []
+        for title in data:
+            if title['type'] == type:
+                titles.append(title)
+    return titles
+
+
 def load_shows_data():
-    with open('app/templates/shows.json') as h:
-        return json.loads(h.read())
+    return load_title_data(1)
 
 
-def load_chores_data():
-    with open('app/templates/chores.json') as h:
-        return json.loads(h.read())
+def load_movies_data():
+    return load_title_data(2)
 
 
-def write_shows_data(shows):
-    with open('app/templates/shows.json', "w")as h:
+def load_comedy_data():
+    return load_title_data(3)
+
+
+def write_shows_data(shows, filename):
+    with open('app/templates/{}.json'.format(filename), "w")as h:
         json.dump(shows, h)
 
 
@@ -73,11 +82,6 @@ def delete_show(name):
             new_shows.append(show)
     write_shows_data(new_shows)
 
-
-def create_viewed_images_file(filename):
-    with open(filename, 'w') as f:
-        empty_list = []
-        f.write(json.dumps(empty_list))
 
 
 
