@@ -29,19 +29,6 @@ def update_shows_meta_data(key, shows):
                 show['seasons'] = title_md['seasons']
     
     return shows
-
-
-'''
-The Flight Attendant tt7569576
-The book of Boba Fett tt13668894
-Ms. Marvel tt10857164
-Moon Knight tt10234724
-The Dropout tt10166622
-The Marvelous Ms. Maisel tt5788792
-The Expanse tt3230854
-Goliath tt4687880
-Raised by Wolves tt9170108
-Nobody tt7888964
-'''        
+   
 
 

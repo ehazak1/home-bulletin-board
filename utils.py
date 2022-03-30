@@ -45,6 +45,14 @@ def write_shows_data(shows, filename):
     with open('app/templates/{}.json'.format(filename), "w")as h:
         json.dump(shows, h)
 
+def content_type_to_filename(content_type):
+    if content_type == 1:
+        return "shows"
+    elif content_type == 2:
+        return "movies"
+    else:
+        return "comedies"
+
 
 def update_show(show_name):
     shows = load_shows_data()
@@ -61,15 +69,23 @@ def update_show(show_name):
     write_shows_data(new_shows)
 
 
-def add_show_to_list(show_name, season_watched, show_type):
-    shows = load_shows_data()
-
-    min_priority = min([show['priority'] for show in shows])
-    for show in shows:
-        show['priority'] += 1
-    new_show = {"name": show_name, "priority": min_priority, "season_watched": season_watched, "type": show_type}
-    shows.append(new_show)
-    write_shows_data(shows)
+def add_show_to_list(show_name, season_watched, show_type, imdb_id, streaming_service):
+    if show_type == 1:
+        data = load_shows_data()
+    elif show_type == 2:
+        data = load_movies_data()
+    else:
+        data = load_comedy_data()
+    
+    if len(data) != 0:
+        min_priority = min([s['priority'] for s in data])
+        for s in data:
+            s['priority'] += 1
+    else:
+        min_priority = 1
+    new_content = {"name": show_name, "priority": min_priority, "season_watched": season_watched, "type": show_type, "imdb_id": imdb_id, "service": streaming_service}
+    data.append(new_content)
+    write_shows_data(data, content_type_to_filename(show_type))
 
 
 def delete_show(name):

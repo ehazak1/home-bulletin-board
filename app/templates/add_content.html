@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{{ page_type }} Backlog</title>
+        <title>Add Content</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -42,31 +42,34 @@
     </nav>
     <div><br></div>
     <div class="container">
-    {% for show in shows %}
-    {% if loop.index0 % 2 == 0 %}
-      <div class="row">
-    {% endif %}
-    <div class="col-md-3">
-      <img src="{{ show.image }}" class="img-thumbnail"> 
-    </div>
-    <div class="col-md-3">
-      <h2>{{ show.name }}</h2>
-      <p><b>Plot:</b> {{ show.plot }}</p>
-      <p><b>Year(s)</b>: {{ show.year }}</p>
-      {% if show.type != 2 %}
-      <p><b>Seasons:</b> {{ show.seasons }}</p>
-      <p><b>Seasons Watched:</b> {{ show.seasons_watched }}</p>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          {% for message in messages %}
+          <ul>
+              <li>{{ message }}</li>
+          </ul>
+          {% endfor %}
       {% endif %}
-      <p><b>Streaming Service:</b> {{ show.service }}</p>
-    </div>
-    {% if loop.index0 % 2 != 0 %}
-      </div>
-      <hr>
-    {% endif %}
-    {% endfor %}
+    {% endwith %}
+    <table class="table table-striped table-bordered">
+      <tbody>
+        <form method="POST" action={{ url_for('add_content') }}>
+          {{ form.hidden_tag() }}
+          <tr><td><b>Name: </b></td><td colspan="7">{{ form.sname(size=20) }}</td></tr>
+          <tr><td><b>IMDB ID:</b></td><td colspan="7"> {{ form.imdb_id(size=20) }}</td></tr>
+          <tr><td><b>Type:</b></td><td colspan="7">{{ form.show_type(value='') }}</td></tr>
+          <tr><td><b>Last Season Watched:</b><td colspan="7"> {{ form.swatch(size=2, value=0) }}</td></tr>
+          <tr>
+            {% for s in form.streaming_service %}
+            <td>{{ s }} {{ s.label }}</td>
+            {% endfor %}
+          </tr>
+          <tr><td colspan="8">{{ form.submit(value='Add Content') }}</td></tr>
+      </form>
+      </tbody>
+    </table>
     </div>
     <hr>
-
     <div>
       <footer>
         <p>&nbsp;&copy; Erez Hazak 2022</p>

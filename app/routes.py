@@ -1,11 +1,12 @@
 from distutils.command.config import config
+import re
 from app import app
 from flask import render_template, request, url_for, redirect, flash
 from app.forms import ShowUpdateForm, AddShowForm
 import json
 from random import choice
 from utils import load_shows_data, load_external_conf, update_show, sort_shows, add_show_to_list, delete_show, \
-     load_movies_data, load_comedy_data, write_shows_data
+     load_movies_data, load_comedy_data, write_shows_data, content_type_to_filename
 from app.data_collection import update_shows_meta_data
 from pathlib import Path
 
@@ -64,23 +65,25 @@ def comedies():
     return render_template('index.html', shows=comedies, page_type="Comedy")
 
 
-@app.route('/addShow', methods=['GET', 'POST'])
-def add_show():
+@app.route('/addContent', methods=['GET', 'POST'])
+def add_content():
     form = AddShowForm()
 
     if request.method == 'POST':
         show = form.sname.data
         swatch = form.swatch.data
         show_type = int(form.show_type.data)
+        imdb_id = form.imdb_id.data
+        streaming_service = form.streaming_service.data
         if len(show) == 0:
             flash('No show added, please type show name')
-            return redirect(url_for('add_show'))
+            return redirect(url_for('add_content'))
         elif show_type == 2 and swatch != 0:
             flash("A movie can't have seasons, please set seasons watched to 0")
-            return redirect(url_for('add_show'))
-        else:
-            add_show_to_list(show, swatch, show_type)
-        return redirect(url_for('shows_backlog'))
+            return redirect(url_for('add_content'))
+        else:            
+            add_show_to_list(show, swatch, show_type, imdb_id, streaming_service)
+        return redirect(url_for('{}'.format(content_type_to_filename(show_type))))
 
-    return render_template('add_show.html', form=form, request=request)
+    return render_template('add_content.html', form=form, request=request)
 
