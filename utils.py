@@ -18,8 +18,7 @@ def load_title_data(type):
     elif type == 2:
         filename = "movies"
     else:
-        filename =   "comedies"
-
+        filename = "comedies"
     with open('app/templates/{}.json'.format(filename)) as h:
         data = json.loads(h.read())
         titles = []
@@ -42,8 +41,9 @@ def load_comedy_data():
 
 
 def write_shows_data(shows, filename):
-    with open('app/templates/{}.json'.format(filename), "w")as h:
+    with open('app/templates/{}.json'.format(filename), "w") as h:
         json.dump(shows, h)
+
 
 def content_type_to_filename(content_type):
     if content_type == 1:
@@ -88,15 +88,24 @@ def add_show_to_list(show_name, season_watched, show_type, imdb_id, streaming_se
     write_shows_data(data, content_type_to_filename(show_type))
 
 
-def delete_show(name):
-    shows = load_shows_data()
-    new_shows = []
-    for show in shows:
-        if show['name'] == name:
+def delete_title(name):
+    si = name.split('-+-')
+    data = load_title_data(int(si[1]))
+
+    new_data = []
+    for title in data:
+        if title['name'] == si[0]:
             continue
         else:
-            new_shows.append(show)
-    write_shows_data(new_shows)
+            new_data.append(title)
+    print(si[1])
+    write_shows_data(new_data, content_type_to_filename(int(si[1])))
+
+
+def create_choices(titles):
+    choices = [("{}-+-{}".format(title['name'], title['type']), title['name']) for title in titles]
+    choices.append(('', ''))
+    return sorted(choices)
 
 
 

@@ -1,13 +1,11 @@
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, SelectField, StringField, IntegerField, BooleanField, RadioField
-from utils import load_shows_data
+from utils import load_movies_data, load_shows_data, load_comedy_data
 
 
 class ShowUpdateForm(FlaskForm):
     shows = load_shows_data()
-    choices = [(show['name'], show['name']) for show in shows]
-    choices.append(('', ''))
-    sname = SelectField('Show', choices=sorted(choices))
+    sname = SelectField('Show', choices=[])
     delete = BooleanField()
     submit = SubmitField()
 
