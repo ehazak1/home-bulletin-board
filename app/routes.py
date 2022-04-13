@@ -115,6 +115,11 @@ def add_content():
 
     return render_template('add_content.html', form=form, request=request)
 
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
 '''
 @app.route('/download', method=['GET'])
 def download():

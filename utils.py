@@ -41,6 +41,7 @@ def load_comedy_data():
 
 
 def write_shows_data(shows, filename):
+    print(filename)
     with open('app/templates/{}.json'.format(filename), "w") as h:
         json.dump(shows, h)
 
@@ -54,19 +55,32 @@ def content_type_to_filename(content_type):
         return "comedies"
 
 
-def update_show(show_name):
-    shows = load_shows_data()
-    new_shows = []
-    max_priority = max([show['priority'] for show in shows])
-    for show in shows:
-        if show['name'] == show_name:
-            swatched = show['season_watched'] + 1
+def update_show(title_data):
+    si = title_data.split('-+-')
+    titles = load_title_data(int(si[1]))
+    new_titles = []
+    max_priority = max([title['priority'] for title in titles])
+    for title in titles:
+        if title['name'] == si[0]:
+            swatched = title['season_watched'] + 1
             priority = max_priority + 1
-            show_type = show['type']
-            new_shows.append({"name": show_name, "season_watched": swatched, "priority": priority, "type": show_type})
+            show_type = title['type']
+            new_titles.append({
+                "name": title['name'], 
+                "season_watched": swatched, 
+                "priority": priority, 
+                "type": show_type,
+                "imdb_id": title['imdb_id'],
+                "service": title['service'],
+                "image": title['image'],
+                "plot": title['plot'],
+                "year": title['year'],
+                "seasons": title['seasons']
+                })
         else:
-            new_shows.append(show)
-    write_shows_data(new_shows)
+            new_titles.append(title)
+
+    write_shows_data(new_titles, content_type_to_filename(int(si[1])))
 
 
 def add_show_to_list(show_name, season_watched, show_type, imdb_id, streaming_service):
