@@ -19,7 +19,7 @@ def load_title_data(type):
         filename = "movies"
     else:
         filename = "comedies"
-    with open('app/templates/{}.json'.format(filename)) as h:
+    with open('app/db/{}.json'.format(filename)) as h:
         data = json.loads(h.read())
         titles = []
         for title in data:
