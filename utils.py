@@ -42,7 +42,7 @@ def load_comedy_data():
 
 def write_shows_data(shows, filename):
     print(filename)
-    with open('app/templates/{}.json'.format(filename), "w") as h:
+    with open('app/db/{}.json'.format(filename), "w") as h:
         json.dump(shows, h)
 
 

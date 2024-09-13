@@ -35,7 +35,7 @@
           </button>
           <a class="navbar-brand" href="/">Shows</a>
           <a class="navbar-brand" href="/movies">Movies</a>
-          <!---<a class="navbar-brand" href="/comedies">Comedies</a>--->
+          <a class="navbar-brand" href="/comedies">Comedies</a>
           <a class="navbar-brand" href="/addContent">Add Content</a>
         </div>
       </div>
@@ -53,7 +53,7 @@
     <div class="col-md-3">
       <h2>{{ show.name }}</h2>
       <p><b>Plot:</b> {{ show.plot }}</p>
-      <p><b>Year(s)</b>: {{ show.year }}</p>
+      <p><b>Release Date</b>: {{ show.year }}</p>
       {% if show.type != 2 %}
       <p><b>Seasons:</b> {{ show.seasons }}</p>
       <p><b>Seasons Watched:</b> {{ show.season_watched }}</p>

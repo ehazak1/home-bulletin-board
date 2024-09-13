@@ -5,3 +5,10 @@ old_site/*
 config.json
 *.lock
 *.diff
+app/db/comedies.json
+app/db/movies.json
+app/db/shows.json
+app/.DS_Store
+app/db/.DS_Store
+.DS_Store
+.vscode/launch.json

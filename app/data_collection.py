@@ -2,18 +2,17 @@ import requests
 from utils import load_external_conf, load_shows_data, write_shows_data
 
 def collect_title_meta_data(imdb_id, api_key, type):
-    title_api = "https://imdb-api.com/en/API/Title/{}/{}"
+    title_api = "https://www.omdbapi.com/?apikey={}&i={}"
     url = title_api.format(api_key, imdb_id)
     r = requests.get(url)
     r_json = r.json()
+    print(r_json)
     md = {}
-    md['image'] = r_json['image']
-    md['plot'] = r_json['plot']
-    if type == 2:
-        md['year'] = r_json['year']
-    else:
-        md['year'] = "{}-{}".format(r_json['year'], r_json['tvSeriesInfo']['yearEnd'])
-        md['seasons'] = len(r_json['tvSeriesInfo']['seasons'])
+    md['image'] = r_json['Poster']
+    md['plot'] = r_json['Plot']
+    md['year'] = r_json['Released']
+    if type != 2:
+        md['seasons'] = r_json['totalSeasons']
     return md
 
 

@@ -16,6 +16,6 @@ class AddShowForm(FlaskForm):
     show_type = SelectField('Type', choices=sorted([(1, 'Show'), (2, 'Movie'), (3, 'Comedy')]))
     imdb_id = StringField()
     streaming_service = RadioField('', choices=['Netflix', 'Amazon Prime', 'Disney+', 'HBO Max', 'AppleTV+', 'Hulu', 'Starz',
-    'Showtime'])
+    'Peacock'])
     submit = SubmitField()
     
